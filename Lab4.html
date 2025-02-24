@@ -1,0 +1,131 @@
+<html>
+
+<head>
+    <title>INST377 Lab 4</title>
+    <style>
+        body {
+            background-color: blue;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        .main-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        
+
+        .all-sections {
+            background-color: lightcoral;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid white;
+            width: 35%;
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            margin-left: 25px;
+            
+        }
+
+
+        .all-sections button {
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 24%;
+            margin: 18px;
+        }
+
+        .all-sections input {
+            padding: 5px;
+            width: 25%;
+            margin: 18px;
+            border: 2px solid black;
+        }
+
+        .all-sections button:hover {
+            background-color: darkgrey;
+        }
+
+        label {
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>INST377 Lab 4</h1>
+
+    <div class="main-container">
+        <!-- Alert Me Section -->
+        <div class="all-sections">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <button onclick="alertMe()">Alert Me</button>
+        </div>
+
+        <!-- Change Color Section -->
+        <div class="all-sections">
+            <button onclick="changeColor()">Change Color</button>
+        </div>
+
+        <!-- Text Tester Section -->
+        <div class="all-sections">
+            <form onsubmit="validateText(); return false;">
+                <label for="textInput">Text Tester:</label>
+                <input type="text" id="textInput" required>
+                <button type="submit">Validate Text</button>
+            </form>
+        </div>
+
+        <!-- Add Text Section -->
+        <div class="all-sections">
+            <button onclick="addText()">Add Text</button>
+        </div>
+    </div>
+
+    <script>
+        function alertMe() {
+            if (document.getElementById("name").value === "") {
+                alert("Name is invalid please enter a name");
+            } else {
+                alert("Hi " + document.getElementById("name").value + "!");
+            }
+        }
+
+        let initialColor = true;
+        function changeColor() {
+            if (initialColor) {
+                document.body.style.backgroundColor = "green";
+            } else {
+                document.body.style.backgroundColor = "blue";
+            }
+            initialColor = !initialColor
+        }
+
+        function validateText() {
+            var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+            if (validation.test(document.getElementById("textInput").value)) {
+                alert("Cannot have special characters");
+            } else {
+                alert("Text is valid");
+            }
+        }
+
+        function addText() {
+            document.querySelector("h1").innerHTML += " Add Text";
+        }
+    </script>
+</body>
+
+</html>
